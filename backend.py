@@ -4,7 +4,7 @@ import openai
 class Chatbot:
     def __init__(self):
         with open(".env", 'r') as file:
-            openai.api_key = file.read().split("=")[1]
+            openai.api_key = file.readline().split("=")[1]
 
     def get_response(self, user_input):
         response = openai.Completion.create(
@@ -15,4 +15,7 @@ class Chatbot:
         ).choice[0].text
         return response
 
-
+'''
+with open(".env", 'r') as file:
+    print(file.readline().split("=")[1])
+    '''
